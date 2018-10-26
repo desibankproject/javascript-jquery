@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	//we are creating blank object!
+	//here customer is one of the JavaScript object
+	
+	var  customer1=new Customer("Nagendra","nagen@gmail.com","white");
+				   //if we use new operator then this will point to current instance of the class	
+	var  customer2=new Customer("Robert","rober@gmail.com","yellow");
+	var  customer3=new Customer("Jhon","jhon@gmail.com","red");
+	console.log(customer1);
+	console.log(customer2);
+	console.log(customer3);
+
+	function Customer(name,email,color){
+		this.name=name;
+		this.email=email;
+		this.color=color;
+	}
+	
+</script>
+</head>
+<body>
+	<h1>Creating instance of JavaScript object!</h1>
+	<img src="student.jpg">
+</body>
+</html>

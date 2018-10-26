@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	"use strict";
+	/*  var cb=function(result){
+				console.log("Result is");
+				console.log(result);
+			};
+
+	  var obj={name:"nagendra",email:"nagendra"}; */	
+	  ajax({name:"rahul",email:"nagendra@gmail.com"},function(result){
+			console.log("Result is");
+			console.log(result);
+		},function(error){
+			console.log("Error is");
+			console.log(error);
+		});	
+	  
+	
+	 function ajax(obj,callback,failure){
+		  if(obj.name=="nagendra"){
+				 callback(obj);
+		  }else{
+			  failure("Hey! your name is not valid!");
+		  }
+		
+	 }
+</script>
+</head>
+<body>
+	<h1>Creating instance of JavaScript object!</h1>
+	<img src="student.jpg">
+</body>
+</html>

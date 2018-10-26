@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	"use strict";
+
+	///hello();
+	
+	//function expression or anonymous function
+	var hello=function(){
+				console.log("hello!!!!!!!!!!!");
+			};
+	
+	//Here we are passing function as a parameter		
+	//this is method call
+	var temp=execute(7,function(num){
+				var temp=1;
+				for(var x=2;x<=num;x++){
+					temp=temp*x;
+				}
+				return temp;
+			 });		
+	console.log(temp);
+	
+	//this is function definition
+	function execute(num,callback){
+		var result=callback(num);		
+		return result;
+	}		
+
+	
+</script>
+</head>
+<body>
+	<h1>Creating instance of JavaScript object!</h1>
+	<img src="student.jpg">
+</body>
+</html>
