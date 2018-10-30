@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileDao {
-
-	public  static String save(String name,String email,String gender,String education,InputStream inputStream,Timestamp doe){
-		String sql="insert into profiles_tbl(name,email,gender,mobile,photo,doe) values(?,?,?,?,?,?)";
+	
+	
+	public  static String update(int sno,String name,String email,String gender,String mobile,InputStream inputStream){
+		String sql="update students_tbl set name=?,email=?,gender=?,mobile=?,photo=? where sno=?";
 		String message="";
 		Connection conn=null;
 		PreparedStatement statement=null;
@@ -23,7 +24,38 @@ public class ProfileDao {
 						statement.setString(1, name);
 						statement.setString(2,email);
 						statement.setString(3, gender);
-						statement.setString(4,education);
+						statement.setString(4,mobile);
+						if (inputStream != null) {
+							// fetches input stream of the upload file for the blob column
+							statement.setBlob(5, inputStream);
+						}
+						statement.setInt(6,sno);
+						// sends the statement to the database server
+						int row = statement.executeUpdate();
+						if (row > 0) {
+							message = "File updated and saved into database";
+						}
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return message;
+	}	
+	
+
+	public  static String save(String name,String email,String gender,String mobile,InputStream inputStream,Timestamp doe){
+		String sql="insert into students_tbl(name,email,gender,mobile,photo,doe) values(?,?,?,?,?,?)";
+		String message="";
+		Connection conn=null;
+		PreparedStatement statement=null;
+		try {
+						conn = DBConnectionPool.getConnFromPool();
+						// constructs SQL statement
+						 statement = conn.prepareStatement(sql);
+						statement.setString(1, name);
+						statement.setString(2,email);
+						statement.setString(3, gender);
+						statement.setString(4,mobile);
 						if (inputStream != null) {
 							// fetches input stream of the upload file for the blob column
 							statement.setBlob(5, inputStream);
@@ -69,7 +101,7 @@ public class ProfileDao {
 	}
 	
 	public static byte[] findImageBySno(int sno){
-		String sql="select photo from profiles_tbl where sno="+sno;
+		String sql="select photo from students_tbl where sno="+sno;
 		PreparedStatement statement=null;
 		Connection conn=null;
 		byte[] photo=new byte[]{};
@@ -78,13 +110,28 @@ public class ProfileDao {
 						statement=conn.prepareStatement(sql);
 						ResultSet rs= statement.executeQuery();
 						if(rs.next()){
-							Blob blob=rs.getBlob(1);
+							 Blob blob=rs.getBlob(1);
 			                 photo=blob.getBytes(1,(int)blob.length());
 						}
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 		return photo;
+	}
+	
+	public static String deleteProfileBySno(int sno){
+		String sql="delete from students_tbl where sno="+sno;
+		PreparedStatement statement=null;
+		Connection conn=null;
+		int rows=0;
+		try {
+						conn = DBConnectionPool.getConnFromPool();
+						statement=conn.prepareStatement(sql);
+						 rows= statement.executeUpdate();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return rows>0?"success":"fail";
 	}
 	
 }
