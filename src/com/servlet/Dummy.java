@@ -9,6 +9,41 @@ public class Dummy {
 		System.out.println("_@)##)#)#)");
 		System.out.println("_@)##)#)#)");
 		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
+		System.out.println("_@)##)#)#)");
 		
 	}
 }
