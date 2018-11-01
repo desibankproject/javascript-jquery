@@ -73,6 +73,35 @@ public class ProfileDao {
 		return message;
 	}	
 	
+	
+	public static List<ProfileVO> findProfilesByEmail(String email){
+		String sql="select sno,name,email,gender,mobile,photo,doe from students_tbl where email=?";
+		PreparedStatement statement=null;
+		Connection conn=null;
+		List<ProfileVO> profileVOs=new ArrayList<ProfileVO>();
+		try {
+						conn = DBConnectionPool.getConnFromPool();
+						statement=conn.prepareStatement(sql);
+						statement.setString(1, email);
+						ResultSet rs= statement.executeQuery();
+						while(rs.next()){
+							int sno=rs.getInt(1);
+							String name=rs.getString(2);
+							String pemail=rs.getString(3);
+							String gender=rs.getString(4);
+							String mobile=rs.getString(5);
+							Blob blob=rs.getBlob(6);
+			                byte[] photo=blob.getBytes(1,(int)blob.length());
+							Timestamp doe=rs.getTimestamp(7);
+							ProfileVO profileVO=new ProfileVO(sno, name, pemail, mobile, gender, new byte[]{}, doe);
+							profileVOs.add(profileVO);
+						}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return profileVOs;
+	}
+	
 	public static List<ProfileVO> findProfiles(){
 		String sql="select sno,name,email,gender,mobile,photo,doe from students_tbl";
 		PreparedStatement statement=null;

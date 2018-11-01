@@ -32,35 +32,31 @@ function deleteRow(sno) {
 			}});
 	}
 
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#csphoto').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 //Ready Handler is function which will be  called when dom is loaded into the memory!
 		 $(document).ready(function(){
+			 
+			 	$("#bphoto").change(function(){
+			 		 readURL(this);
+				    
+				});
 				//All the jQuery code we will write here
 				//document.elementById("load");
 				$("#load").click(function(){
 					//fetching JSON data from txt file
 					var  url="students"
 					$.getJSON("students",function(data){ //data will hold json data as a JavaScript object
-						console.log(data);
-						 //data is Array of JavaScript object	
-						 //console.log(data);
-						/*  data.forEach(pdata=>{
-							console.log(pdata);
-						 }) */
-						 var tbcontents="";
-						 for(var x=0;x<data.length;x++){
-							console.log(data[x]);
-							tbcontents=tbcontents+'<tr id="rowdata'+data[x].sno+'">';
-							tbcontents=tbcontents+'<td>'+(x+1)+'</td>';
-							tbcontents=tbcontents+'<td>'+data[x].name+'</td>';
-							tbcontents=tbcontents+'<td>'+data[x].email+'</td>';
-							tbcontents=tbcontents+'<td>'+data[x].mobile+'</td>';
-							tbcontents=tbcontents+'<td>'+data[x].gender+'</td>';
-							tbcontents=tbcontents+'<td><img id="pimage'+data[x].sno+'" src="image-loader?sno='+data[x].sno+'" style="height:120px;"/>';
-							tbcontents=tbcontents+'<a href="javascript:deleteRow('+data[x].sno+');"><img src="delete.png" style="height:40px;"/></a>';
-							tbcontents=tbcontents+'<a href="javascript:editRow('+data[x].sno+');"><img src="edit.png" style="height:40px;"/></a>';
-							tbcontents=tbcontents+'</td></tr>';
-						 }
-						 $("#tcontents").html(tbcontents);
+						showData(data);
 					});
 
 				});

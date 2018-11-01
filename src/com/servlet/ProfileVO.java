@@ -3,7 +3,7 @@ package com.servlet;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
-public class ProfileVO {
+public class ProfileVO implements Comparable<ProfileVO> {
 	private int sno;
 	private String name;
 	private String email;
@@ -90,6 +90,12 @@ public class ProfileVO {
 	public String toString() {
 		return "ProfileVO [sno=" + sno + ", name=" + name + ", email=" + email + ", education=" + mobile
 				+ ", gender=" + gender + ", photo=" + Arrays.toString(photo) + ", doe=" + doe + "]";
+	}
+
+	@Override
+	public int compareTo(ProfileVO o) {
+		//this will be sorted ascending order as per email lexicographical sorting
+		return this.email.compareTo(o.email);
 	}
 
 }
